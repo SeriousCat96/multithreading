@@ -8,7 +8,7 @@ namespace ProducerConsumer
 	class TextFileContextProducer : IProducer<TextFileContext>
 	{
 		/// <summary>Рабочий поток поставщика.</summary>
-		private readonly Thread workerThread;
+		public Thread workerThread;
 		/// <summary>Объект синхронизации производителя.</summary>
 		private readonly object syncRoot;
 		/// <summary>Генератор случайных чисел.</summary>

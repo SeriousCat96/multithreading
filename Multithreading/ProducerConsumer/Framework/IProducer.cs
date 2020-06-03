@@ -4,7 +4,7 @@ namespace ProducerConsumer
 {
 	/// <summary>Интерфейс поставщика данных.</summary>
 	/// <typeparam name="T">Тип поставляемых данных.</typeparam>
-	public interface IProducer<out T> : IDisposable
+	public interface IProducer<out T> : IThreadWorker
 	{
 		/// <summary>Возвращает имя производителя.</summary>
 		string Name { get; }
@@ -12,9 +12,5 @@ namespace ProducerConsumer
 		/// <summary>Поставляет данные.</summary>
 		/// <returns>Поставляемые данные.</returns>
 		T Produce();
-
-		void Start();
-
-		void Join();
 	}
 }

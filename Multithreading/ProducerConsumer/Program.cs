@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,32 +16,34 @@ namespace ProducerConsumer
 		}
 
 		static string Name => "MainThread";
+		static string FileName => "data.txt";
 
 		static void Main(string[] args)
 		{
-			var consumerQueue = new SingleConsumerQueue<TextFileContext>(new TextFileConsumer("data.txt"));
-			var producer      = new TextFileContextProducer(consumerQueue);
-
-			Console.WriteLine($"({Thread.CurrentThread.Name}): Нажмите любую клавишу чтобы остановить модель.");
+			ISingleConsumerQueue<TextFileContext> consumerQueue = new SingleConsumerQueue<TextFileContext>(new TextFileConsumer(FileName));
+			IThreadWorker producerThread = new TextFileContextProducer(consumerQueue);
+			IThreadWorker consumerThread = consumerQueue;
 
 			try
 			{
-				consumerQueue.Start();
-				producer.Start();
+				consumerThread.Start();
+				producerThread.Start();
 
-				Console.ReadKey();
+				Console.WriteLine($"({Thread.CurrentThread.Name}): Модель запущена. Данные пишутся в {Path.Combine(Directory.GetCurrentDirectory(), FileName)}");
+				Console.WriteLine($"({Thread.CurrentThread.Name}): Нажмите любую клавишу, чтобы остановить модель.");
+				Console.ReadKey(true);
 				Console.WriteLine($"({Thread.CurrentThread.Name}): Остановка модели...");
 			}
 			finally
 			{
-				producer.Dispose();
-				consumerQueue.Dispose();
+				producerThread.Dispose();
+				consumerThread.Dispose();
 
-				producer.Join();
-				consumerQueue.Join();
+				producerThread.Join();
+				consumerThread.Join();
 
 				Console.WriteLine($"({Thread.CurrentThread.Name}): Модель остановлена. Нажмите любую клавишу для выхода...");
-				Console.ReadKey();
+				Console.ReadKey(true);
 			}
 		}
 	}

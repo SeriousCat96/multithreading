@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Framework\IThreadWorker.cs" />
     <Compile Include="TextFileContext.cs" />
     <Compile Include="Framework\IConsumer.cs" />
     <Compile Include="Framework\IProducer.cs" />

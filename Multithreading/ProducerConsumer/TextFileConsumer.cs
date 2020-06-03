@@ -11,7 +11,7 @@ namespace ProducerConsumer
 		private readonly object syncRoot;
 		/// <summary>Генератор случайных чисел.</summary>
 		private readonly Random random;
-		/// <summary>Генератор случайных чисел.</summary>
+		/// <summary>Имя файла для записи данных.</summary>
 		private readonly string fileName;
 
 		public string Name => nameof(TextFileConsumer);
