@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProducerConsumer
+﻿namespace ProducerConsumer
 {
 	/// <summary>Интерфейс очереди объектов производителей для одного потребителя.</summary>
 	/// <typeparam name="T">Тип объекта потребления.</typeparam>

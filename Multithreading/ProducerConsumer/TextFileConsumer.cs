@@ -39,6 +39,7 @@ namespace ProducerConsumer
 
 			Monitor.Enter(syncRoot);
 
+			// Запись данных в файл.
 			WriteToFile(context);
 
 			Monitor.Exit(syncRoot);

@@ -79,13 +79,20 @@ namespace ProducerConsumer
 			while(isWorking)
 			{
 				Monitor.Enter(syncRoot);
-				// Производим объект.
-				var context = Produce();
 
-				Console.WriteLine($"({Thread.CurrentThread.Name}): Генерируем данные: \"{context}\".");
-				ConsumerQueue.Enqueue(context);
+				try
+				{
+					// Производим объект.
+					var context = Produce();
 
-				Monitor.Exit(syncRoot);
+					Console.WriteLine($"({Thread.CurrentThread.Name}): Генерируем данные: \"{context}\".");
+					// Добавляем объект в очередь потребления.
+					ConsumerQueue.Enqueue(context);
+				}
+				finally
+				{
+					Monitor.Exit(syncRoot);
+				}
 			}
 		}
 

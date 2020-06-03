@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProducerConsumer
+﻿namespace ProducerConsumer
 {
 	/// <summary>Интерфейс поставщика данных.</summary>
 	/// <typeparam name="T">Тип поставляемых данных.</typeparam>
