@@ -16,7 +16,7 @@ namespace ProducerConsumer
 
 		static void Main(string[] args)
 		{
-			ISingleConsumerQueue<TextFileContext> consumerQueue = new SingleConsumerQueue<TextFileContext>(new TextFileConsumer(FileName));
+			ISingleConsumerQueue<TextFileContext> consumerQueue = new MonitorSingleConsumerQueue<TextFileContext>(new TextFileConsumer(FileName));
 			IThreadWorker producerThread = new TextFileContextProducer(consumerQueue);
 			IThreadWorker consumerThread = consumerQueue;
 

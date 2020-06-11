@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B02A4243-29C2-43BF-88FE-CB466B907109}</ProjectGuid>
+    <ProjectGuid>{F47C028A-3D36-4C7C-AF00-269766E47C61}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>StoreModeling</RootNamespace>
-    <AssemblyName>StoreModeling</AssemblyName>
+    <RootNamespace>ShopModel</RootNamespace>
+    <AssemblyName>ShopModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,19 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalConstants.cs" />
-    <Compile Include="IShop.cs" />
-    <Compile Include="IVisitor.cs" />
-    <Compile Include="IMultipleVisitorsQueue.cs" />
-    <Compile Include="IVisitorFactory.cs" />
-    <Compile Include="ShopModel.cs" />
-    <Compile Include="TimeConverter.cs" />
-    <Compile Include="SemaphoreCashDeskModel.cs" />
-    <Compile Include="Customer.cs" />
+    <Compile Include="IConcurrentModel.cs" />
+    <Compile Include="IMultipleWorkersPool.cs" />
     <Compile Include="IThreadWorker.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="IVisitor.cs" />
+    <Compile Include="IWorker.cs" />
+    <Compile Include="MultipleWorkersPool.cs" />
+    <Compile Include="ShopModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeModel.cs" />
+    <Compile Include="CashDeskWorker.cs" />
+    <Compile Include="TimeConverter.cs" />
+    <Compile Include="Time.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

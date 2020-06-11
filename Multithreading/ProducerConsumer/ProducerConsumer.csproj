@@ -50,7 +50,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextFileContextProducer.cs" />
-    <Compile Include="SingleConsumerQueue.cs" />
+    <Compile Include="MonitorSingleConsumerQueue.cs" />
     <Compile Include="TextFileConsumer.cs" />
   </ItemGroup>
   <ItemGroup>
