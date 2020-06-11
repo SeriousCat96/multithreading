@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProducerConsumer", "ProducerConsumer\ProducerConsumer.csproj", "{CA7105EB-3261-40BC-BA96-2AEE46275F42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreModeling", "StoreModeling\StoreModeling.csproj", "{B02A4243-29C2-43BF-88FE-CB466B907109}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopModel", "ShopModel\ShopModel.csproj", "{F47C028A-3D36-4C7C-AF00-269766E47C61}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{CA7105EB-3261-40BC-BA96-2AEE46275F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA7105EB-3261-40BC-BA96-2AEE46275F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA7105EB-3261-40BC-BA96-2AEE46275F42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B02A4243-29C2-43BF-88FE-CB466B907109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B02A4243-29C2-43BF-88FE-CB466B907109}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B02A4243-29C2-43BF-88FE-CB466B907109}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B02A4243-29C2-43BF-88FE-CB466B907109}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F47C028A-3D36-4C7C-AF00-269766E47C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F47C028A-3D36-4C7C-AF00-269766E47C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F47C028A-3D36-4C7C-AF00-269766E47C61}.Release|Any CPU.ActiveCfg = Release|Any CPU

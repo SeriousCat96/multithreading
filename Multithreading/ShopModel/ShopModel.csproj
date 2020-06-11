@@ -42,12 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IConcurrentModel.cs" />
     <Compile Include="IMultipleWorkersPool.cs" />
-    <Compile Include="IThreadWorker.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="IVisitor.cs" />
     <Compile Include="IWorker.cs" />
     <Compile Include="MultipleWorkersPool.cs" />
     <Compile Include="ShopModel.cs" />
