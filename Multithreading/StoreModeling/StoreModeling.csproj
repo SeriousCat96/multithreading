@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA7105EB-3261-40BC-BA96-2AEE46275F42}</ProjectGuid>
+    <ProjectGuid>{B02A4243-29C2-43BF-88FE-CB466B907109}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProducerConsumer</RootNamespace>
-    <AssemblyName>ProducerConsumer</AssemblyName>
+    <RootNamespace>StoreModeling</RootNamespace>
+    <AssemblyName>StoreModeling</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,20 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\IThreadWorker.cs" />
-    <Compile Include="TextFileContext.cs" />
-    <Compile Include="Framework\IConsumer.cs" />
-    <Compile Include="Framework\IProducer.cs" />
-    <Compile Include="Framework\ISingeConsumerQueue.cs" />
+    <Compile Include="GlobalConstants.cs" />
+    <Compile Include="IShop.cs" />
+    <Compile Include="IVisitor.cs" />
+    <Compile Include="IMultipleVisitorsQueue.cs" />
+    <Compile Include="IVisitorFactory.cs" />
+    <Compile Include="ShopModel.cs" />
+    <Compile Include="TimeConverter.cs" />
+    <Compile Include="SemaphoreCashDeskModel.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="IThreadWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextFileContextProducer.cs" />
-    <Compile Include="MonitorSingleConsumerQueue.cs" />
-    <Compile Include="TextFileConsumer.cs" />
+    <Compile Include="TimeModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="readme.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

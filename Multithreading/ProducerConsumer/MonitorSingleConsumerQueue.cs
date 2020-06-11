@@ -7,7 +7,7 @@ namespace ProducerConsumer
 	/// <summary>Очередь потребления объектов производителя для одного потребителя.</summary>
 	/// <typeparam name="T">Тип объекта потребления.</typeparam>
 	/// <remarks>Реализация модели Producer-Consumer с использованием <see cref="Monitor"/>.</remarks>
-	class SingleConsumerQueue<T> : ISingleConsumerQueue<T>
+	class MonitorSingleConsumerQueue<T> : ISingleConsumerQueue<T>
 		where T : class
 	{
 		/// <summary>Рабочий поток потребителя.</summary>
@@ -22,9 +22,9 @@ namespace ProducerConsumer
 		private bool isWorking;
 
 
-		/// <summary>Создание <see cref="SingleConsumerQueue"/>.</summary>
+		/// <summary>Создание <see cref="MonitorSingleConsumerQueue"/>.</summary>
 		/// <param name="consumer">Потребитель данных.</param>
-		public SingleConsumerQueue(IConsumer<T> consumer)
+		public MonitorSingleConsumerQueue(IConsumer<T> consumer)
 		{
 			this.consumer  = consumer ?? throw new ArgumentNullException(nameof(consumer));
 			syncRoot       = new object();
@@ -69,6 +69,7 @@ namespace ProducerConsumer
 
 			try
 			{
+				Console.WriteLine($"({Thread.CurrentThread.Name}): Pulse");
 				// Добавляем объект в очередь.
 				// Сообщаем очередному ждущему потоку в Monitor.Wait(syncRoot), что в очереди появился новый объект, поток может идти дальше.
 				consumerQueue.Enqueue(data);
@@ -92,6 +93,7 @@ namespace ProducerConsumer
 					// Пропускается только один поток. Остальные потоки ожидают, пока не вызовется Monitor.Pulse(syncRoot).
 					if(consumerQueue.Count == 0)
 					{
+						Console.WriteLine($"({Thread.CurrentThread.Name}): Wait");
 						Monitor.Wait(syncRoot);
 					}
 
