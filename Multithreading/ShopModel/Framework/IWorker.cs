@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShopModel
+﻿namespace ShopModel
 {
 	/// <summary>Интерфейс работника.</summary>
 	/// <typeparam name="T">Тип обрабатываемого объекта.</typeparam>

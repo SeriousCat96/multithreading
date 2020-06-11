@@ -2,15 +2,15 @@
 
 namespace ShopModel
 {
-	/// <summary>Касса, обслуживающая покупателя.</summary>
-	class CashDeskWorker : IWorker<Customer>
+	/// <summary>Работник магазина (касса, обслуживающая покупателя).</summary>
+	class ShopWorker : IWorker<Customer>
 	{
 		public string Name { get; }
 
 		/// <summary>Возвращает время оплаты на кассе.</summary>
 		public TimeSpan PaymentTime { get; }
 
-		public CashDeskWorker(string name, TimeSpan paymentTime)
+		public ShopWorker(string name, TimeSpan paymentTime)
 		{
 			Name         = name;
 			PaymentTime  = paymentTime;

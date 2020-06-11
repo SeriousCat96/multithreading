@@ -42,19 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMultipleWorkersPool.cs" />
+    <Compile Include="Framework\IMultipleWorkersPool.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Framework\IThreadWorker.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="IWorker.cs" />
+    <Compile Include="Framework\IWorker.cs" />
     <Compile Include="MultipleWorkersPool.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="ShopModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CashDeskWorker.cs" />
+    <Compile Include="ShopWorker.cs" />
     <Compile Include="TimeConverter.cs" />
     <Compile Include="Time.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="readme.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,28 +1,16 @@
 ﻿using System;
-using System.Globalization;
 using System.Threading;
 
 namespace ShopModel
 {
 	class ShopModel : IDisposable
 	{
-		#region Static
 
-		private const string MainThreadName = "MainThread";
-		private const int PeakHourFactor    = 2;
-
+		private const int PeakHourFactor = 2;
 		private static long CustomersCounter;
 
-
-		static ShopModel()
-		{
-			Thread.CurrentThread.Name = MainThreadName;
-		}
-
-		#endregion
-
 		private readonly Thread workerThread;
-		private readonly MultipleWorkersPool<Customer> workersPool;
+		private readonly IMultipleWorkersPool<Customer> workersPool;
 
 		private volatile int customersInside;
 		private bool isWorking;
@@ -57,9 +45,9 @@ namespace ShopModel
 			}
 		}
 
-		public ShopModel(CashDeskWorker[] cashDeskworkers, TimeSpan spentTime, TimeSpan frequency)
+		public ShopModel(IMultipleWorkersPool<Customer> workersPool, TimeSpan spentTime, TimeSpan frequency)
 		{
-			workersPool       = new MultipleWorkersPool<Customer>(cashDeskworkers);
+			this.workersPool  = workersPool;
 			SpentTime         = spentTime;
 			VisitorsFrequency = frequency;
 			workerThread      = new Thread(ShopModelThreadProc)
@@ -67,56 +55,6 @@ namespace ShopModel
 				Name         = Name,
 				IsBackground = true,
 			};
-		}
-
-		static void Main(string[] args)
-		{
-			// 200 - значит в 200 раз быстрее.
-			Console.WriteLine("Введите множитель ускорения времени:");
-			var factor = double.Parse(Console.ReadLine());
-			Console.WriteLine("Введите время в формате чч:мм:сс :");
-			var time = TimeSpan.Parse(Console.ReadLine());
-
-			Console.WriteLine("Введите количество касс:");
-			var workerCount = int.Parse(Console.ReadLine());
-			var workers     = new CashDeskWorker[workerCount];
-
-			Console.WriteLine("Введите время оплаты на кассе (мин.):");
-			var paymentTime = double.Parse(Console.ReadLine());
-			for(int i = 0; i < workerCount; ++i)
-			{
-				workers[i] = new CashDeskWorker($"Worker{i + 1}", TimeSpan.FromMinutes(paymentTime));
-			}
-
-			Console.WriteLine("Введите время нахождения покупателя (мин.):");
-			var spentTime = double.Parse(Console.ReadLine());
-
-
-			Console.WriteLine("Введите частоту посещения магазина покупателями (мин.):");
-			var frequency = double.Parse(Console.ReadLine());
-
-			var model = new ShopModel(workers, TimeSpan.FromMinutes(spentTime), TimeSpan.FromMinutes(frequency));
-
-			Console.WriteLine();
-
-			try
-			{
-				Time.Setup(time, factor);
-				Log.Warn("Нажмите любую клавишу, чтобы остановить модель.");
-				model.Start();
-
-				Console.ReadKey(true);
-			}
-			finally
-			{
-				Log.Warn("Остановка модели.");
-
-				model.Dispose();
-				model.Join();
-
-				Log.Warn("Модель остановлена.");
-				Console.ReadKey(true);
-			}
 		}
 
 		public void Start()
